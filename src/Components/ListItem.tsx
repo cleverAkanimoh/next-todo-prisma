@@ -2,7 +2,8 @@ type Props = {}
 
 const ListItem = (props: Props) => {
   return (
-    <div>ListItem</div>
+    <li>
+    <input type="checkbox" name={id} id={id} /></li>
   )
 }
 
