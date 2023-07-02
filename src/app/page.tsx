@@ -1,8 +1,11 @@
 import ListItem from "@/Components/ListItem";
+import { prisma } from "@/db";
 import Link from "next/link";
-import { JSX } from "react";
 
-export default function Home() {
+export default async function Home() {
+  const todos = await prisma.todo.findMany()
+  await prisma.todo.create({ data: { title: 'clever', complete: false } })
+
   return (
     <main className="w-[84%] flex flex-col items-center justify-enter">
 
@@ -12,9 +15,11 @@ export default function Home() {
         <Link href='new' className="border rounded p-2 outline-none hover:bg-slate-700 focus-within:bg-slate-700 capitalize">create todo</Link>
       </header>
 
-      <ul className="w-full my-5">{
-        todos.map((todo: JSX.IntrinsicAttributes & { id: string; title: string; complete: boolean; }) => <ListItem key={id} {...todo} />)
-      }</ul>
+      <ul className="w-full my-5">
+        {
+          todos.map((todo) => <ListItem key={todo.id} {...todo} />)
+        }
+      </ul>
 
     </main>
   )
