@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default async function Home() {
   const todos = await prisma.todo.findMany()
-  await prisma.todo.create({ data: { title: 'clever', complete: false } })
+  // await prisma.todo.create({ data: { title: 'clever', complete: false } })
 
   return (
     <main className="w-[84%] flex flex-col items-center justify-enter">
@@ -17,7 +17,7 @@ export default async function Home() {
 
       <ul className="w-full my-5">
         {
-          todos.map((todo) => <ListItem key={todo.id} {...todo} />)
+          todos.map((todo:any) => <ListItem key={todo.id} {...todo} />)
         }
       </ul>
 
