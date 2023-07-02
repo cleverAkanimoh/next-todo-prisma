@@ -1,18 +1,23 @@
 import Link from "next/link"
 
-type Props = {}
+async function createTodo(data: FormData) {
+    'use server';
+    console.log(data);
+    
+}
 
-const page = (props: Props) => {
+const page = () => {
     return (
         <main className="w-[84%] flex flex-col items-center">
             <header className="w-full flex items-center my-5">
                 <h1 className="text-2xl"><span className="font-bold">Create</span> Todos</h1>
             </header>
-            <form action={''} className="w-full my-5">
+            
+            <form action={createTodo} className="w-full my-5">
                 <input
                     type="text"
                     placeholder="enter todo..."
-                    className="bg-transparent border w-full h-12 rounded my-2 px-2"
+                    className="bg-transparent border border-slate-500 focus-within:border-slate-400 w-full h-12 rounded my-2 px-2"
                 />
 
                 <div
